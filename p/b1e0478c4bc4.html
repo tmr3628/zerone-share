@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow,noarchive,nosnippet"><meta name="referrer" content="no-referrer"><title>限定公開</title>
+<style>
+body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;background:#f4f4f6;color:#222;font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans",sans-serif}
+@media(prefers-color-scheme:dark){body{background:#17171a;color:#eee}input{background:#222;color:#eee;border-color:#555}}
+form{width:min(92vw,360px);text-align:center}
+h1{font-size:18px;margin:0 0 16px}
+input{width:100%;box-sizing:border-box;padding:12px;font-size:16px;border:1px solid #bbb;border-radius:8px}
+button{margin-top:12px;width:100%;padding:12px;font-size:16px;border:0;border-radius:8px;background:#2f6fed;color:#fff}
+p{min-height:1.5em;font-size:14px;color:#c0392b}
+</style></head><body>
+<form id="f"><h1>合言葉を入力してください</h1>
+<input id="p" type="password" autocomplete="current-password" autofocus>
+<button type="submit">開く</button><p id="m"></p></form>
+<script>
+const D={"salt":"W6Xc4bQ9n0J0OfVlylcBwg==","iv":"8ttu/O20t1fktRYr","ct":"izvAzK0UKqLk01VlL1SOgWWdgzF+DfzYFfOKOMHtPhPNUTwyWzcIwg8qO0V6JE7iRgYcDvYQCUrmL9Wok3X9PKLAA3IHtdzvRdAl2V5Tad80Rzl7cOUAcX4CdUKOg46BcVZU+YEjViL93Qe2Pe3wYkJLQcOA3Sf8BO1Z/VNjIqc75C0cS5HCC1jNcfkvnuo9ilN2rtekhjNrfyE3r9eXgaotJCPfC8ZaTBGkvwb90pkjG5ymezXu9AoQxuKUg+eyTifC+Cc6rl3+gRdWALfo55we3sB1h3zrujga3v1mIp0zz1s73TvNPZ1zlEj3hSvKSfYWdbrqYkxikgbNSqaKHTujc/QdeejQvoj6c+Hb0J8rg5QwAJQADMExogdhwdBF3n108ODcUSyg/p+Vym1FaVemBX0i58o9nu5OS6r07xFmJ6Qmx2g/PBKP/ggX3Ret+KQRUZZyobHRQfCe2OzfiW595pp71fZM3+4T0sCoQdrEXBfQzBQUimD8pikwImgOyYLOfmg/l0ZPlkQIOFeXmRYmDsYY8CqRfuDz6kiSf8mWl471qSsLIVUstBZBGnbA5bpXDdC+tljNYEDxwO/575t/gLC6BqdigbjbWY7sF81n4c1A/6yOmIrGTxCtYtTMB9IHN8YHeKRbQIRpik7a3bwEfozob6i0ntaOLxq86OHfPbRvDIDosNvMab5oNYfns6GPjtnCOLZk9Dt0rn6KQV6paj4qhg7iQJuQ0WwI8XY6sutBohmfpaBLtLSMbIApCvhlkBPetWsaFs2/geB/kVojRSUlpwO6/rcc84INpjRjZwlVyYxKU4McXp/qsD91C0YEeqcfc5pw7QQqyTsTODBAIMGOOQeglfSiJzz/J0HOtUIEZQjZ0czM29voy39f9K8IWp0AA6CIIpfiRB/5HLB+BJ4TYcsXyaxA5E3pHReAipvfq/91B1J2+1KJYipPvtGVbMN2Q/I5ynGF48BD2BZyHVdh0XNfe5IrWIP+zMrQBb+xy0yKgY611yoCORXfTRFxE6ia8/kzljwN4dFoWrDH74rRVzJSz5TTOPDUph93BiTrSi2OrjHcS5ckStGSO9Ckfl0d9JYYLICxrGtavBL+RMtUj5nYwfw=","iter":600000};
+const b=s=>Uint8Array.from(atob(s),c=>c.charCodeAt(0));
+document.getElementById("f").addEventListener("submit",async e=>{
+  e.preventDefault();const m=document.getElementById("m"),p=document.getElementById("p");m.textContent="確認中…";
+  try{
+    const k=await crypto.subtle.importKey("raw",new TextEncoder().encode(p.value),"PBKDF2",false,["deriveKey"]);
+    const key=await crypto.subtle.deriveKey({name:"PBKDF2",salt:b(D.salt),iterations:D.iter,hash:"SHA-256"},k,{name:"AES-GCM",length:256},false,["decrypt"]);
+    const pt=await crypto.subtle.decrypt({name:"AES-GCM",iv:b(D.iv)},key,b(D.ct));
+    document.open();document.write(new TextDecoder().decode(pt));document.close();
+  }catch(x){m.textContent="合言葉が違います"}
+});
+</script></body></html>
