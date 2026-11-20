@@ -3,26 +3,41 @@
 <meta name="robots" content="noindex,nofollow,noarchive,nosnippet"><meta name="referrer" content="no-referrer"><title>限定公開</title>
 <style>
 body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;background:#f4f4f6;color:#222;font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans",sans-serif}
-@media(prefers-color-scheme:dark){body{background:#17171a;color:#eee}input{background:#222;color:#eee;border-color:#555}}
+@media(prefers-color-scheme:dark){body{background:#17171a;color:#eee}input[type=password]{background:#222;color:#eee;border-color:#555}}
 form{width:min(92vw,360px);text-align:center}
 h1{font-size:18px;margin:0 0 16px}
-input{width:100%;box-sizing:border-box;padding:12px;font-size:16px;border:1px solid #bbb;border-radius:8px}
+input[type=password]{width:100%;box-sizing:border-box;padding:12px;font-size:16px;border:1px solid #bbb;border-radius:8px}
 button{margin-top:12px;width:100%;padding:12px;font-size:16px;border:0;border-radius:8px;background:#2f6fed;color:#fff}
+label{display:block;margin-top:10px;font-size:14px;text-align:left}label small{display:block;color:#888;margin-left:22px}
 p{min-height:1.5em;font-size:14px;color:#c0392b}
 </style></head><body>
-<form id="f"><h1>合言葉を入力してください</h1>
+<form id="f" hidden><h1>合言葉を入力してください</h1>
 <input id="p" type="password" autocomplete="current-password" autofocus>
+<label><input type="checkbox" id="r"> この端末で覚える（30日）<small>共有の端末では、印を付けないでください</small></label>
 <button type="submit">開く</button><p id="m"></p></form>
 <script>
-const D={"salt":"6nlKykNpVrbotldB9aLtqg==","iv":"Zg7OzQ0YLmoZyVLT","ct":"HTvTVUGfbJ2NdWa/jvhb6cHYm0MdcNF8NWLd48ATZ+i2PA0iScyLG+MU2A3BFrXaySV8EAlOpY58FtCvVg6PPQMxYE3d3WbeLSld6p8dOh8IfEMN6A4tF/fXEPRMxIt9/gSo2hvN7Z5Zd8kvqmrnAkq7caBVfT9N7+ujABCO+Lgvg0gIZ4kd4XHi5iF75QLL/EgyKGqQf2R/GY9F/atx/9qGwiyfWE/QZhJOVt+MFoYXm9u/hCjtrt77P8iV82R4aFDxxUPK8z4Bfxi26796p7z4uh7Fln5DmeW1cKfx+EJar0c9DIhPC+9l+7n77iMT48/8aD4MfM7jkIpalkKHwLHZGlTLTpVi2yoernO0kiGPIq9sR3+i3x4n6cLbyfIUyAMaRzmWZwcZ0/GHk1N2r1RNv7n0wgzb2KWnhzTYKyFE6X36n9oec1ZXGLrus94MVrMoqcGXTMqGcHNjN+S7/OIzSilsOewk2h/gfjhVionYrsRwy1orCgCs9kVs6/Z7QJRs+KPpGPufNPCl9a+e323mClD0tOgJNf0uNqJdSt2yDCaZxEDN+NLTxBP4gFquw6NN/j8InF2kditXjx48GC+7ir/h2Rit12JezfmWDhCbGvidsuPkrDa9c0yJU+Kci2HPS2+PmfXkct/VNMMTUa4jAps+o/2GPQv8u+ZDH4Zw1f4fYNdHKSbsj+a2eqBlpgVJvgiUVtOk/bFD1GSvqYQFxM93OrfUcDlf9Hmm9U75/BoO8jrbKr1hhZg5BAkyegotqpxd+jDY3xh9uiphpM/5aAE1odTsaHcM4Q6gwy0NMuUPo2Uwnl2L0j5c43KVclrGKIqVn6I82tiuH7Jq7P11UQ7O4iQZUvVd3oJnf/BQOYZP23xR9P7YJBZLdbdwz7fc03VggknRQnHDmEZz/smgbjdu/oGdBf/LZMAs0j5FFo6jP6j/0m5ACvhTxvSl5UCYU7LwBkm+3tCMsm13/z5F3klIFmYLzT04Y1nk9C7k5gLRLMX7OT0qczQtRzDcu8JuzqFCdRu6RTdkvm2bpjbooLNhPwE3zDV7+RqkMpVYyzqX+UebYJyK4oQjXZQnvY9nzWBcjEjzng4jJ0GrCFd48Q5rkpTj9MI=","iter":600000};
+const D={"salt":"IgYJQ/s8dedREjieGLJkiQ==","iv":"6HnqpOAfkTYFmwgk","ct":"tGWAWu0ozA/gLFBe4B7n9sE1Jymb0Tq6B094+CEJhvxwBBZGs8GvIAU88TUgSMj1aXHH1MIm2UZBogC+GPa3UK15r5MH0mIrvkgOPtx8eU7NVu2YL247ThQ4FFrG2FtpzEo1tDt5SlC5vszo+MdvOsiNdjeSQf5iV+zRE+DEQiHFEOeWHwpavYnug0x6kyZHAnmOFKrfccYjfUM1x0zx6pIwBkSUArUnpVM3+FHfl08V9Hbvx0rCqiSjISTMFCbkNMZppMD9vnyYkvFlzUYQ8BbdK/a4EjlwxfEAZRNhvnLNeRXLVmLfcwXkj91BxZnqeBNKAdh3IW5LuR8RS8qkaE3jaNUEunwhOUxXLZDCHTPKqc/fCC+q/U/odWXIVyoBV0aHIEc3xfGKxHAhRynfBv+neOXMl+fn9ctBuAc6XkSe8Cm8HWeoCmAGEB62ohYqONia4uBD/YxG+9uvUT9gc7IEL1BZrTXC58cCvyaYqx8oau2oW2aUIPUt3lhJy9bQUFIti345663AutflsaVZrncFtX/1ev51JJUWZFy/cXiMVk6KqIOXN5puqxxX+EAeovD6UNjZpcdm7imTU8m8jFqYPmplukDT7zi/r0pAFXnX2AiePq9YQp4VQWjTfHwk4AdvAroy7dePoQG0Zcjd46XH2FAJxTB9CxAues41mdGlyOArAT+KiwCGhHXXgnkwDMiISPMjJ53nW5eb4NaOXdQRwbQB2x5HmrIHAtT9T/8Bc6Ymy8YWhY7g07T6HkwTJ4GJaZzTPtAs0hdurm6y7D3f9eDhZUDig+t+41Y7pokUghjOT6hhMN/wp47jULWenGvAmaooEggjxf9Cyr9MQt7SxaKK1OtFgbt4sDuhaLMDdJgJ7kpBVsE8MGqNWcGc9HWLa7TELo+UkckAMglev8GNSOkpy/RsA/cnut+kzkuaCsRTgewJ63LBIzJIhsg7ppcb5s8LDrWb8ATBNbkYKlnM2Z46bBMi1+b4FtM6Z1N+sN500A9t4Id+JdeRbwLXUWU9zsAS09XltaSIzXGHHGQXrte2qa7/JuF07JQFxw6EN26aczpfqo1cNC+XCRZAK7joAgoTWuofSYPBIiQ4jzsF/dkEgUB/E7o=","iter":600000,"kid":"587c0976d0f90176"};
 const b=s=>Uint8Array.from(atob(s),c=>c.charCodeAt(0));
+const idb=()=>new Promise((res,rej)=>{const r=indexedDB.open("zs_keys",1);r.onupgradeneeded=()=>r.result.createObjectStore("k");r.onsuccess=()=>res(r.result);r.onerror=()=>rej(r.error)});
+async function getK(){try{const db=await idb();return await new Promise(res=>{const q=db.transaction("k").objectStore("k").get(D.kid);q.onsuccess=()=>res(q.result);q.onerror=()=>res(null)})}catch(e){return null}}
+async function putK(key){try{const db=await idb();await new Promise(res=>{const t=db.transaction("k","readwrite");t.objectStore("k").put({key:key,exp:Date.now()+30*864e5},D.kid);t.oncomplete=()=>res();t.onerror=()=>res()})}catch(e){}}
+async function delK(){try{const db=await idb();db.transaction("k","readwrite").objectStore("k").delete(D.kid)}catch(e){}}
+const dec=async key=>new TextDecoder().decode(await crypto.subtle.decrypt({name:"AES-GCM",iv:b(D.iv)},key,b(D.ct)));
+const show=h=>{document.open();document.write(h);document.close()};
+(async()=>{
+  const r=await getK();
+  if(r&&r.exp>Date.now()){try{show(await dec(r.key));return}catch(e){}}
+  if(r)delK();
+  document.getElementById("f").hidden=false;document.getElementById("p").focus();
+})();
 document.getElementById("f").addEventListener("submit",async e=>{
   e.preventDefault();const m=document.getElementById("m"),p=document.getElementById("p");m.textContent="確認中…";
   try{
     const k=await crypto.subtle.importKey("raw",new TextEncoder().encode(p.value),"PBKDF2",false,["deriveKey"]);
     const key=await crypto.subtle.deriveKey({name:"PBKDF2",salt:b(D.salt),iterations:D.iter,hash:"SHA-256"},k,{name:"AES-GCM",length:256},false,["decrypt"]);
-    const pt=await crypto.subtle.decrypt({name:"AES-GCM",iv:b(D.iv)},key,b(D.ct));
-    document.open();document.write(new TextDecoder().decode(pt));document.close();
+    const html=await dec(key);
+    if(document.getElementById("r").checked)await putK(key);
+    show(html);
   }catch(x){m.textContent="合言葉が違います"}
 });
 </script></body></html>
